@@ -1,0 +1,39 @@
+#include <Servo.h>
+
+// Пины для сервоприводов
+int servoXPin = 9;  // Сервопривод для оси X
+int servoYPin = 10; // Сервопривод для оси Y
+
+Servo servoX;
+Servo servoY;
+
+void setup() {
+  servoX.attach(servoXPin);
+  servoY.attach(servoYPin);
+  
+  Serial.begin(9600);  // Инициализация последовательной связи
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    // Чтение координат с компьютера
+    String data = Serial.readStringUntil('\n');
+    int separatorIndex = data.indexOf(',');
+    String xStr = data.substring(0, separatorIndex);
+    String yStr = data.substring(separatorIndex + 1);
+
+    // Преобразование координат в числа
+    int x = xStr.toInt();
+    int y = yStr.toInt();
+
+    // Масштабирование координат (в зависимости от разрешения)
+    int servoXPos = map(x, 0, 640, 0, 180); // Преобразуем координату X в угол
+    int servoYPos = map(y, 0, 480, 0, 180); // Преобразуем координату Y в угол
+
+    // Управление сервоприводами
+    servoX.write(servoXPos);
+    servoY.write(servoYPos);
+
+    delay(50); // Ожидание для стабилизации сервоприводов
+  }
+}
