@@ -1,0 +1,86 @@
+{% extends "shared/_layout.html" %}
+
+{% block content %}
+<div class="row align-items-center mt-5">
+    <div class="col-lg-6">
+        <h1 class="display-4 fw-bold text-success">Система обнаружения сорняков</h1>
+        <p class="lead mt-3">
+            <strong>LaserWeed.AI</strong> — это интеллектуальная система компьютерного зрения, предназначенная для
+            автоматического обнаружения сорняков в режиме реального времени. Проект помогает аграриям
+            снижать затраты на обработку посевов и увеличивать эффективность борьбы с сорняками.
+        </p>
+        <p>
+            Система анализирует видеопоток, определяет область расположения сорняков и интегрирована
+            с лазерным оборудованием для их автоматического удаления.
+        </p>
+        <a href="/broadcast" class="btn btn-success btn-lg mt-3">
+            <i class="fa-solid fa-video"></i> Просмотр видеопотока
+        </a>
+        <a href="/stats" class="btn btn-outline-success btn-lg mt-3 ms-2">
+            <i class="fa fa-pie-chart"></i> Перейти к статистике
+        </a>
+    </div>
+
+    <div class="col-lg-6 text-center">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/static/img/eurasia_group_logo.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/static/img/shakarim_logo.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/static/img/ektu_logo.png" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row text-center g-4">
+    <div class="col-md-4">
+        <div class="card shake shadow-sm h-100">
+            <div class="card-body">
+                <i class="fa-solid fa-brain fa-2x text-success mb-3"></i>
+                <h5 class="fw-bold">Искусственный интеллект</h5>
+                <p class="text-muted">Продвинутая нейросеть выявляет сорняки в любых условиях освещённости и на любых
+                    типах почвы.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shake shadow-sm h-100">
+            <div class="card-body">
+                <i class="fa-solid fa-video fa-2x text-success mb-3"></i>
+                <h5 class="fw-bold">Видеопоток в реальном времени</h5>
+                <p class="text-muted">Обрабатывайте изображение в живом режиме, отслеживая количество и расположение
+                    сорняков.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shake shadow-sm h-100">
+            <div class="card-body">
+                <i class="fa-solid fa-pie-chart fa-2x text-success mb-3"></i>
+                <h5 class="fw-bold">Подробная статистика</h5>
+                <p class="text-muted">Аналитика помогает оценивать эффективность обработки и выявлять проблемные
+                    участки.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

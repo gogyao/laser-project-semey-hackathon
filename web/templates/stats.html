@@ -1,0 +1,79 @@
+{% extends "shared/_layout.html" %}
+
+{% block title %}Статистика{% endblock %}
+
+{% block content %}
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-success text-white fw-bold">
+        Таблица участков
+    </div>
+    <div class="card-body p-0">
+        <table id="fields" class="table mb-0">
+            <thead class="table-light">
+                <tr>
+                    <td>Участок</td>
+                    <td>Площадь</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if fields %}
+                {% for field in fields %}
+                <tr>
+                    <td>{{ field.name }}</td>
+                    <td>{{ field.area }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr class="text-center">
+                    <td colspan="2">В таблице нет данных...</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <div id="pagination-fields" class="p-2"></div>
+    </div>
+</div>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-success text-white fw-bold">
+        Таблица операций
+    </div>
+    <div class="card-body p-0">
+        <table id="operations" class="table mb-0">
+            <thead class="table-light">
+                <tr>
+                    <td>Участок</td>
+                    <td>Операция</td>
+                    <td>Время начала</td>
+                    <td>Время конца</td>
+                    <td>Работник/оператор</td>
+                    <td>Найдено сорняков</td>
+                    <td>Уничтожено сорняков</td>
+                </tr>
+            </thead>
+            <tbody>
+                {%if operations%}
+                {% for operation in operations %}
+                <tr>
+                    <td>{{ operation.field.name }}</td>
+                    <td>{{ operation.operation_type }}</td>
+                    <td>{{ operation.start_time }}</td>
+                    <td>{{ operation.end_time }}</td>
+                    <td>{{ operation.worker }}</td>
+                    <td>{{ operation.detected_weeds }}</td>
+                    <td>{{ operation.removed_weeds }}</td>
+                </tr>
+                {% endfor %}
+                {%else%}
+                <tr class="text-center">
+                    <td colspan="7">В таблице нет данных...</td>
+                </tr>
+                {%endif%}
+            </tbody>
+        </table>
+        <div id="pagination-operations" class="p-2"></div>
+    </div>
+</div>
+
+<script src="/static/js/stats.js"></script>
+{% endblock %}
