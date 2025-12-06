@@ -7,5 +7,3 @@ node_modules
 **/venv
 
 .~lock.*
-
-AutogluonModels
