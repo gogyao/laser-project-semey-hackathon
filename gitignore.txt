@@ -1,0 +1,11 @@
+**/misc
+~$*
+node_modules
+.env
+
+**/.venv
+**/venv
+
+.~lock.*
+
+AutogluonModels
