@@ -33,13 +33,6 @@ async def home(request: Request):
     )
 
 
-@app.get("/broadcast", response_class=HTMLResponse)
-async def broadcast(request: Request):
-    return templates.TemplateResponse(
-        "broadcast.html", {"request": request, "active_page": "broadcast"}
-    )
-
-
 @app.get("/devices", response_class=HTMLResponse)
 async def devices(request: Request):
     db = SessionLocal()
