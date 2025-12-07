@@ -1,0 +1,60 @@
+{% extends "shared/_layout.html" %}
+
+{% block title %}Устройства{% endblock %}
+
+{% block content %}
+<div class="card mb-4 shadow-sm">
+    <div class="card-header bg-success text-white fw-bold">
+        Таблица устройств
+    </div>
+
+    <div class="card-body p-0">
+        <table id="devices" class="table table-striped mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Название</th>
+                    <th>Модель</th>
+                    <th>Серийный номер</th>
+                    <th>Ёмкость (mAh/Wh)</th>
+                    <th>Заряд %</th>
+                    <th>Мощность (Вт)</th>
+                    <th>Время работы (мин)</th>
+                    <th>Мощность выжигания (Вт)</th>
+                    <th>Темп. (°C)</th>
+                    <th>Радиус (см)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if devices %}
+                {% for device in devices %}
+                <tr>
+                    <td>{{ device.name }}</td>
+                    <td>{{ device.model }}</td>
+                    <td>{{ device.serial_number }}</td>
+                    <td>{{ device.battery_capacity }}</td>
+                    <td>{{ device.battery_level }}</td>
+                    <td>{{ device.power_usage }}</td>
+                    <td>{{ device.estimated_runtime }}</td>
+                    <td>{{ device.burn_power }}</td>
+                    <td>{{ device.burn_temperature }}</td>
+                    <td>{{ device.burn_radius }}</td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="10" class="text-center py-3 text-muted">
+                        Нет устройств для отображения
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <div id="pagination-devices" class="p-2"></div>
+    </div>
+</div>
+
+<script src="/static/js/pagination.js"></script>
+<script src="/static/js/stats.js"></script>
+{% endblock %}

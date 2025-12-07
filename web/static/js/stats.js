@@ -30,5 +30,8 @@ function paginateTable(tableId, paginationId, rowsPerPage = 5) {
     showPage(1);
 }
 
-paginateTable("fields", "pagination-fields");
-paginateTable("operations", "pagination-operations");
+document.addEventListener("DOMContentLoaded", () => {
+    paginateTable("fields", "pagination-fields");
+    paginateTable("operations", "pagination-operations");
+    paginateTable("devices", "pagination-devices");
+});
